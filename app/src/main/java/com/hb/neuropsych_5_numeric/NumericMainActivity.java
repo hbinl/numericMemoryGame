@@ -22,6 +22,7 @@ public class NumericMainActivity extends ActionBarActivity {
     private long number;
     private int round_no;
     private int num_correct_so_far;
+    private int num_errors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class NumericMainActivity extends ActionBarActivity {
         Intent intent = getIntent();
         round_no = intent.getIntExtra("roundNo",1);
         num_correct_so_far = intent.getIntExtra("numCorrectSoFar",0);
+        num_errors = intent.getIntExtra("numErrors",0);
 
         // Update round number display
         TextView tv_round = (TextView)findViewById(R.id.roundView);
@@ -123,7 +125,10 @@ public class NumericMainActivity extends ActionBarActivity {
         intent.putExtra("roundNo", round_no);
         intent.putExtra("numberOfDigits", round_no+1);
         intent.putExtra("numCorrectSoFar", num_correct_so_far);
+        intent.putExtra("numErrors", num_errors);
+
         startActivity(intent);
+
 
     }
 

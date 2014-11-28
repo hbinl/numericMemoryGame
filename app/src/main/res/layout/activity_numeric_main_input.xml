@@ -12,15 +12,16 @@
     android:text="@string/numpad_instruction"
     android:textSize="30sp"
     android:layout_marginBottom="80dp"
-    android:layout_above="@+id/editText"
+    android:layout_above="@+id/numInput"
     android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:text="@string/numpad_submit_button"
-        android:id="@+id/button"
-        android:layout_below="@+id/editText"
+        android:id="@+id/submit_button"
+        android:onClick="checkAnswer"
+        android:layout_below="@+id/numInput"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp"
         android:gravity="center"/>
@@ -31,10 +32,17 @@
         android:gravity="center"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/numInput"
         android:background="#dddddd"
         android:textSize="30sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:hint="@string/hint_type_here" />
+
+    <Button
+        android:onClick="numericSkip"
+        android:text="@string/button_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
