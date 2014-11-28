@@ -8,8 +8,11 @@
      NEXT button.</string>
     <string name="button_next">Next</string>
     <string name="title_activity_numeric_main">NumericMainActivity</string>
-    <string name="numeric_main_number">[Number]</string>
+    <string name="numeric_main_number">%s</string>
+    <string name="numeric_main_round">Round %s</string>
     <string name="title_activity_numeric_main_input">NumericMainInput</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="numpad_submit_button">Submit</string>
+    <string name="numpad_instruction">Please enter the number shown just now:</string>
+    <string name="hint_type_here">Type here...</string>
 
 </resources>

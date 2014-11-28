@@ -46,6 +46,8 @@ public class NumericStart extends ActionBarActivity {
 
     public void startNumeric(View view) {
         Intent intent = new Intent(this, NumericMainActivity.class);
+        intent.putExtra("roundNo",1);
+        intent.putExtra("numCorrectSoFar",0);
         startActivity(intent);
 
     }
