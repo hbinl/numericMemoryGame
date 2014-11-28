@@ -1,31 +1,24 @@
 package com.hb.neuropsych_5_numeric;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import java.util.Random;
 
-
-public class NumericStart extends ActionBarActivity {
+public class NumericMainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.activity_numeric_start);
+        setContentView(R.layout.numeric_main);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_numeric_start, menu);
+        getMenuInflater().inflate(R.menu.menu_numeric_main, menu);
         return true;
     }
 
@@ -42,11 +35,5 @@ public class NumericStart extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void startNumeric(View view) {
-        Intent intent = new Intent(this, NumericMainActivity.class);
-        startActivity(intent);
-
     }
 }

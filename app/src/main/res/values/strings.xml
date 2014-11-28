@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Neuropsych_5_Numeric</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Numeric Memory Test</string>
     <string name="action_settings">Settings</string>
+    <string name="numeric_intro">In this game, you will be shown a number to remember. \n\nThe number will disappear after 3 seconds, and then you have to enter the number
+    into the number pad on screen. \nThe number will become longer each time you remember correctly.\n\nThe first number will be 2 digits long. \nWhen you\'re ready, press
+     NEXT button.</string>
+    <string name="button_next">Next</string>
+    <string name="title_activity_numeric_main">NumericMainActivity</string>
+    <string name="numeric_main_number">[Number]</string>
+    <string name="title_activity_numeric_main_input">NumericMainInput</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
