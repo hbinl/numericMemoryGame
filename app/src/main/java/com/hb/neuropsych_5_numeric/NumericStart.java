@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 
 public class NumericStart extends ActionBarActivity {
@@ -48,6 +46,7 @@ public class NumericStart extends ActionBarActivity {
     }
 
     public void startNumeric(View view) {
+        // Let's go!
         Intent intent = new Intent(this, NumericMainActivity.class);
         intent.putExtra("roundNo",1);
         intent.putExtra("numCorrectSoFar",0);

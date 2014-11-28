@@ -11,38 +11,43 @@
     android:layout_height="wrap_content"
     android:text="@string/numpad_instruction"
     android:textSize="30sp"
-    android:layout_marginBottom="80dp"
-    android:layout_above="@+id/numInput"
-    android:layout_centerHorizontal="true" />
+    android:id="@+id/textView"
+    android:layout_below="@+id/button2"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="45dp" />
 
     <Button
         android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:text="@string/numpad_submit_button"
         android:id="@+id/submit_button"
         android:onClick="checkAnswer"
-        android:layout_below="@+id/numInput"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_alignTop="@+id/numInput"
+        android:layout_toRightOf="@+id/numInput"
+        android:layout_toEndOf="@+id/numInput"
+        android:layout_alignBottom="@+id/numInput" />
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:gravity="center"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/numInput"
         android:background="#dddddd"
         android:textSize="30sp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_type_here" />
+        android:hint="@string/hint_type_here"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="10dp" />
 
     <Button
         android:onClick="numericSkip"
         android:text="@string/button_skip"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/button2" />
 
 </RelativeLayout>

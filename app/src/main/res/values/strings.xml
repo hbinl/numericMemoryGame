@@ -17,7 +17,7 @@
     <string name="title_activity_numeric_main_input">NumericMainInput</string>
     <string name="numpad_submit_button">Submit</string>
     <string name="numpad_instruction">Please enter the number shown just now:</string>
-    <string name="hint_type_here">Type here...</string>
+    <string name="hint_type_here">Type here…</string>
     <string name="title_activity_numeric_end_report">NumericEndReport</string>
     <string name="hello_world">Hello world!</string>
 

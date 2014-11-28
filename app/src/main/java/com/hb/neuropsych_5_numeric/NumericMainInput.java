@@ -6,10 +6,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class NumericMainInput extends ActionBarActivity {
@@ -27,32 +31,56 @@ public class NumericMainInput extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numeric_main_input);
 
+        // extracting data from previous Activity
         Intent intent = getIntent();
         number = intent.getLongExtra("numberGeneratedForCurrentRound", 0);
         round_no = intent.getIntExtra("roundNo",1);
         numberOfDigits = intent.getIntExtra("numberOfDigits", 0);
         num_correct_so_far = intent.getIntExtra("numCorrectSoFar",0);
         num_errors = intent.getIntExtra("numErrors",0);
+        skipped = false;
+
 
         textInput = (EditText) findViewById(R.id.numInput);
 
-        skipped = false;
+        // Listen to soft keyboard Done/Return button presses
+        textInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    checkAnswer(findViewById(R.id.submit_button));
+                }
+                return false;
+            }
+        });
+
+        // Auto focus on the input field
+        getWindow().setSoftInputMode (WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        textInput.setFocusableInTouchMode(true);
+        textInput.setFocusable(true);
+        textInput.requestFocus();
     }
 
     public void checkAnswer(View view) {
+        // Checks the answer once the input is submitted
         String input = textInput.getText().toString();
         long user_input;
 
+        // Check if empty input
         if (input.trim().equals("")) {
+            // If empty, set default value
             user_input = -1;
         }
         else {
+            // If not, parse the input into Long for comparison
             user_input = (long) Long.parseLong(input);
         }
 
-
+        // Starts comparing
         if (user_input == number) {
+            // If correct answer, increment correct count, and proceed
+
             num_correct_so_far++;
+
             if (round_no < 11) {
                 nextRound();
             }
@@ -61,6 +89,7 @@ public class NumericMainInput extends ActionBarActivity {
             }
         }
         else {
+            // else, increment wrong count
             num_errors++;
 
             if (num_errors < 2) {
@@ -73,6 +102,7 @@ public class NumericMainInput extends ActionBarActivity {
     }
 
     public void nextRound() {
+        // Proceeding to the next Round
         Intent intent = new Intent(this, NumericMainActivity.class);
         intent.putExtra("roundNo",round_no+1);
         intent.putExtra("numCorrectSoFar",num_correct_so_far);
@@ -81,6 +111,8 @@ public class NumericMainInput extends ActionBarActivity {
     }
 
     public void endRounds() {
+
+        // >2 wrongs, or reached round 11, hence ending the game and show report
         Intent intent = new Intent(this, NumericEndReport.class);
         intent.putExtra("numberGeneratedForCurrentRound", number);
         intent.putExtra("roundNo",round_no);

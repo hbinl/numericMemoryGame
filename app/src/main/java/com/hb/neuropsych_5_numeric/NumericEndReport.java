@@ -23,6 +23,7 @@ public class NumericEndReport extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numeric_end_report);
 
+        // Extracting intent data from previous activity
         Intent intent = getIntent();
         number = intent.getLongExtra("numberGeneratedForCurrentRound", 0);
         round_no = intent.getIntExtra("roundNo",1);
@@ -31,11 +32,14 @@ public class NumericEndReport extends ActionBarActivity {
         num_errors = intent.getIntExtra("numErrors",0);
         skipped = intent.getBooleanExtra("skipped",false);
 
+        // getting total time taken
         duration = System.currentTimeMillis() - NumericStart.start_time;
 
+        // Uppercasing the first char of the boolean value
         String skipped_str = Boolean.toString(skipped);
         String skipped_str_caps = Character.toUpperCase(skipped_str.charAt(0)) + skipped_str.substring(1);
 
+        // Displaying the data
         TextView textview = (TextView)findViewById(R.id.report_textview);
 
         textview.setText(
@@ -51,7 +55,7 @@ public class NumericEndReport extends ActionBarActivity {
     }
 
     public void proceed(View view) {
-        //placeholder for linking to another test game
+        // placeholder for linking to another test game
         Intent intent = new Intent(this, NumericStart.class);
         startActivity(intent);
     }
