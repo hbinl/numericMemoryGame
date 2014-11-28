@@ -49,7 +49,7 @@ public class NumericMainActivity extends ActionBarActivity {
 
         Random r = new Random();
         //number = r.nextInt( 9 * i ) + i;
-        number = (long) ( (r.nextDouble()*i) + i );
+        number = (long) ( (r.nextDouble()*9*i) + i );
 
         // Displaying the generated random number
         TextView tv_number = (TextView)findViewById(R.id.numeric_num);

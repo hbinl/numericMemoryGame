@@ -20,6 +20,7 @@ public class NumericMainInput extends ActionBarActivity {
     private int numberOfDigits;
     private int num_correct_so_far;
     private int num_errors;
+    private boolean skipped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class NumericMainInput extends ActionBarActivity {
 
         textInput = (EditText) findViewById(R.id.numInput);
 
-
+        skipped = false;
     }
 
     public void checkAnswer(View view) {
@@ -51,6 +52,7 @@ public class NumericMainInput extends ActionBarActivity {
 
 
         if (user_input == number) {
+            num_correct_so_far++;
             if (round_no < 11) {
                 nextRound();
             }
@@ -80,9 +82,11 @@ public class NumericMainInput extends ActionBarActivity {
 
     public void endRounds() {
         Intent intent = new Intent(this, NumericEndReport.class);
-        intent.putExtra("roundNo",round_no+1);
+        intent.putExtra("numberGeneratedForCurrentRound", number);
+        intent.putExtra("roundNo",round_no);
         intent.putExtra("numCorrectSoFar",num_correct_so_far);
         intent.putExtra("numErrors",num_errors);
+        intent.putExtra("skipped", skipped);
         startActivity(intent);
     }
 
@@ -94,6 +98,7 @@ public class NumericMainInput extends ActionBarActivity {
         // setting what to do when clicking OK button
         builder.setPositiveButton(R.string.button_confirm, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                skipped = true;
                 endRounds();
             }
         });

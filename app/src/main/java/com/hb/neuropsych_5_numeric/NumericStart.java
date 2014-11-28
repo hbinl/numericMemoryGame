@@ -11,7 +11,7 @@ import android.view.WindowManager;
 
 
 public class NumericStart extends ActionBarActivity {
-
+    public static long start_time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +19,9 @@ public class NumericStart extends ActionBarActivity {
         // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_numeric_start);
+
+        //initialise start timer
+        start_time = System.currentTimeMillis();
     }
 
 

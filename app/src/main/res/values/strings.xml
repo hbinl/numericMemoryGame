@@ -21,4 +21,13 @@
     <string name="title_activity_numeric_end_report">NumericEndReport</string>
     <string name="hello_world">Hello world!</string>
 
+    <string name="numeric_last_number">Last number:\u0020</string>
+    <string name="numeric_rounds_answered">Rounds answered:\u0020</string>
+    <string name="numeric_num_of_digits">Number of Digits:\u0020 </string>
+    <string name="numeric_num_correct">Correct:\u0020</string>
+    <string name="numeric_num_wrong">Wrong:\u0020 </string>
+    <string name="numeric_skipped">Skipped?:\u0020 </string>
+    <string name="numeric_duration">Total Time Taken:\u0020 </string>
+    <string name="duration_unit">seconds</string>
+
 </resources>

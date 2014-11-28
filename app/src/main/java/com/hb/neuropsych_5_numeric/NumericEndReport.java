@@ -1,19 +1,60 @@
 package com.hb.neuropsych_5_numeric;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 public class NumericEndReport extends ActionBarActivity {
+    public static long duration;
+    private long number;
+    private int round_no;
+    private int numberOfDigits;
+    private int num_correct_so_far;
+    private int num_errors;
+    private boolean skipped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numeric_end_report);
+
+        Intent intent = getIntent();
+        number = intent.getLongExtra("numberGeneratedForCurrentRound", 0);
+        round_no = intent.getIntExtra("roundNo",1);
+        numberOfDigits = intent.getIntExtra("numberOfDigits", 0);
+        num_correct_so_far = intent.getIntExtra("numCorrectSoFar",0);
+        num_errors = intent.getIntExtra("numErrors",0);
+        skipped = intent.getBooleanExtra("skipped",false);
+
+        duration = System.currentTimeMillis() - NumericStart.start_time;
+
+        String skipped_str = Boolean.toString(skipped);
+        String skipped_str_caps = Character.toUpperCase(skipped_str.charAt(0)) + skipped_str.substring(1);
+
+        TextView textview = (TextView)findViewById(R.id.report_textview);
+
+        textview.setText(
+                getString(R.string.numeric_last_number) + number + "\n" +
+                        getString(R.string.numeric_rounds_answered) + round_no + "\n" +
+                        getString(R.string.numeric_num_of_digits) + numberOfDigits + "\n" +
+                        getString(R.string.numeric_num_correct) + num_correct_so_far + "\n" +
+                        getString(R.string.numeric_num_wrong) + num_errors + "\n" +
+                        getString(R.string.numeric_skipped) + skipped_str_caps + "\n" +
+                        getString(R.string.numeric_duration) + duration/1000 + " " + getString(R.string.duration_unit)
+
+        );
     }
 
+    public void proceed(View view) {
+        //placeholder for linking to another test game
+        Intent intent = new Intent(this, NumericStart.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
